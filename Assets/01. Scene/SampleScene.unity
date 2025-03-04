@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28fc8da3cabe4b329aec22bb6bd0012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  Controller: {fileID: 0}
 --- !u!114 &1633364890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,12 +544,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpPower: 80
-  groundLayerMask:
+  jumpForce: 80
+  groundLayer:
     serializedVersion: 2
     m_Bits: 55
   cameraContainer: {fileID: 1622442459}
-  minXLook: 0
+  mixXLook: -85
   maxXLook: 85
   lookSensitivity: 0.2
   canLook: 1
