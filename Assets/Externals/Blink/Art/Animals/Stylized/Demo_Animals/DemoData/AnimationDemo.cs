@@ -15,7 +15,7 @@ namespace BLINK
 
         [System.Serializable]
         public class AnimationEntry
-        {`
+        {
             public string animationName;
             public AnimationType type;
         }
