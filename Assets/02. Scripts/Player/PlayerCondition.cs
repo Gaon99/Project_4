@@ -1,7 +1,11 @@
 using System;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour
+public interface IDamagable
+{
+    void TakeDamage(float damage);
+}
+public class PlayerCondition : MonoBehaviour ,IDamagable
 {
     public UICondition uiCondition;
 
@@ -10,6 +14,7 @@ public class PlayerCondition : MonoBehaviour
     Condition stamina { get { return uiCondition.stamina; } }
 
     public float noHungerHealthDecay;
+    private IDamagable _damagableImplementation;
     public event Action onTakeDamage;
 
     private void Update()
@@ -17,12 +22,12 @@ public class PlayerCondition : MonoBehaviour
         hunger.Subtract(hunger.passiveValue * Time.deltaTime);
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        if(hunger.curValue < 0f)
+        if(hunger.curValue <= 0f)
         {
             health.Subtract(noHungerHealthDecay * Time.deltaTime);
         }
 
-        if(health.curValue < 0f)
+        if(health.curValue <= 0f)
         {
             Die();
         }
@@ -41,5 +46,11 @@ public class PlayerCondition : MonoBehaviour
     public void Die()
     {
         Debug.Log("플레이어가 죽었다.");
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health.Subtract(damage);
+        onTakeDamage?.Invoke();
     }
 }
