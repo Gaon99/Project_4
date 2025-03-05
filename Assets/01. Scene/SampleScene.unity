@@ -393,9 +393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b6a4dcf6545427dafd93589a8fa1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  hunger: {fileID: 0}
-  stamina: {fileID: 0}
+  health: {fileID: 827495719}
+  hunger: {fileID: 842162726}
+  stamina: {fileID: 1618517346}
 --- !u!114 &377846434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
   maxValue: 100
   startValue: 100
   passiveValue: 1
-  uiBar: {fileID: 0}
+  uiBar: {fileID: 2093400621}
 --- !u!1 &842162724
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,8 +768,8 @@ MonoBehaviour:
   curValue: 0
   maxValue: 500
   startValue: 400
-  passiveValue: -20
-  uiBar: {fileID: 0}
+  passiveValue: 20
+  uiBar: {fileID: 1169296498}
 --- !u!114 &842162727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   maxValue: 100
   startValue: 100
   passiveValue: 5
-  uiBar: {fileID: 0}
+  uiBar: {fileID: 1740918304}
 --- !u!114 &1618517347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  noHungerHealthDecay: 0
+  noHungerHealthDecay: 2
 --- !u!1 &1740918302
 GameObject:
   m_ObjectHideFlags: 0
