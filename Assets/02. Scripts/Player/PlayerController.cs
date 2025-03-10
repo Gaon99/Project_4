@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     public Action inventory;
     
     private Rigidbody rd;
-    
+    public JumpPaddle jp; 
+        
     private void Awake()
     {
         rd = GetComponent<Rigidbody>();
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        moveSpeed = 5f;
     }
 
     private void FixedUpdate()
@@ -58,7 +60,15 @@ public class PlayerController : MonoBehaviour
             ToggleCursor();
         }
     }
-    
+
+    public void OnUsePaddle(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started&&jp.IsPad)
+        {
+            Vector3 jumpForce = new Vector3(0, 200f, 0);
+            rd.AddForce(jumpForce, ForceMode.Impulse);
+        }
+    }
     public void OnLookInput(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();

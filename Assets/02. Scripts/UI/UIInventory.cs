@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,13 +50,10 @@ public class UIInventory : MonoBehaviour
             slots[i].Clear();
 
         }
-
-
         ClearSelectedItemWindow();
-
     }
 
-		void ClearSelectedItemWindow()
+    void ClearSelectedItemWindow()
     {
         selectedItem = null;
 
@@ -198,8 +196,10 @@ public class UIInventory : MonoBehaviour
                         condition.Heal(selectedItem.item.consumables[i].value); break;
                     case ConsumableType.Hunger:
                         condition.Eat(selectedItem.item.consumables[i].value);break;
+                    case ConsumableType.Speed :
+                        StartCoroutine(SpeedBoost(5f, selectedItem.item.consumables[i].value)); break;
                 }
-            }
+            } 
             RemoveSelctedItem();
         }
     }
@@ -262,4 +262,11 @@ public class UIInventory : MonoBehaviour
     {
         return false;
     }
+    private IEnumerator SpeedBoost(float duration,float value)
+    {
+        controller.moveSpeed += value;
+        yield return new WaitForSeconds(duration);
+        controller.moveSpeed -= value;
+    }
+
 }

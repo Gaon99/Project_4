@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UsePad",
+                    "type": "Button",
+                    "id": "f7119f50-ea65-47ca-806e-20440c5e7c10",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -163,11 +172,22 @@
                 {
                     "name": "",
                     "id": "4c8c06f8-c086-437b-848c-41a349e3bafb",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdfe8b2a-b949-4a5c-9e70-6f6a2c87ab14",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UsePad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
