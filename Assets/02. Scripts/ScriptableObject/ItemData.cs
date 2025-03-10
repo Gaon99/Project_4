@@ -28,6 +28,8 @@ public class ItemData : ScriptableObject
     public int maxStack;
     
     [Header("Consumable")]public ConsumableItem[] consumables;
+    
+    [Header("Equip")]public GameObject equipPrefab;
 }
 
 [System.Serializable]
