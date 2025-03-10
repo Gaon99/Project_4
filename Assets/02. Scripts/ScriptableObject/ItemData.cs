@@ -33,6 +33,6 @@ public class ItemData : ScriptableObject
 [System.Serializable]
 public class ConsumableItem
 {
-    public ConsumableType Type;
+    public ConsumableType type;
     public float value;
 }

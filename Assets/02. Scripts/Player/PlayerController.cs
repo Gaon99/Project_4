@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,9 +22,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 mouseDelta;
     
     [HideInInspector] public bool canLook = true;
-
+    
+    public Action inventory;
+    
     private Rigidbody rd;
-
+    
     private void Awake()
     {
         rd = GetComponent<Rigidbody>();
@@ -46,6 +50,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnInventoryButton(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+    
     public void OnLookInput(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
@@ -103,8 +116,9 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void ToggleCursor(bool toggle)
+    void ToggleCursor()
     {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;    
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }

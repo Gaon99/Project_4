@@ -6,15 +6,18 @@ using UnityEngine.TextCore.Text;
 
 public class Player : MonoBehaviour
 {
-    public PlayerController Controller;
+    public PlayerController controller;
     public PlayerCondition condition;
 
-    public ItemData data;
+    public ItemData itemData;
     public Action addItem;
+    
+    public Transform dropPosition;
+    
     private void Awake()
     {
         CharacterManager.Instance.Player = this;
-        Controller = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
     }
 }
