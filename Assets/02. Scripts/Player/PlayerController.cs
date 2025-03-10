@@ -26,8 +26,9 @@ public class PlayerController : MonoBehaviour
     public Action inventory;
     
     private Rigidbody rd;
-    public JumpPaddle jp; 
-        
+    public JumpPaddle jp;
+    public float useStamina;
+    
     private void Awake()
     {
         rd = GetComponent<Rigidbody>();
@@ -85,7 +86,10 @@ public class PlayerController : MonoBehaviour
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
+        {
             rd.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+            CharacterManager.Instance.Player.condition.UseStamina(useStamina);
+        }
     }
     
     private void Move()
