@@ -27,7 +27,6 @@ public class UIInventory : MonoBehaviour
     private int curEquipIndex;
     private Coroutine activeSpeedBoost;
 
-
     private PlayerController controller;
     private PlayerCondition condition;
 
@@ -270,7 +269,7 @@ public class UIInventory : MonoBehaviour
     {
         if (activeSpeedBoost != null)
         {
-            StopCoroutine(activeSpeedBoost); // 기존 SpeedBoost 중지
+            StopCoroutine(activeSpeedBoost);
         }
         activeSpeedBoost = StartCoroutine(SpeedBoost(duration, value));
     }
@@ -280,8 +279,6 @@ public class UIInventory : MonoBehaviour
         controller.moveSpeed += value;
         yield return new WaitForSecondsRealtime(duration);
         controller.moveSpeed -= value;
-        activeSpeedBoost = null; // 실행 종료 후 초기화
+        activeSpeedBoost = null;
     }
-
-
 }
