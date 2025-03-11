@@ -42,7 +42,7 @@ public class PlayerCondition : MonoBehaviour ,IDamagable
     {
         hunger.Add(amount);
     }
-
+    
     public void Die()
     {
         Debug.Log("플레이어가 죽었다.");

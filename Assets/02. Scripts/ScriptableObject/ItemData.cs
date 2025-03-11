@@ -13,7 +13,7 @@ public enum ConsumableType
 {
     Hunger,
     Health,
-    Speed
+    Speed,
 }
 
 [CreateAssetMenu(fileName = "Item",menuName = "New Item")]

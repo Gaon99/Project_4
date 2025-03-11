@@ -25,6 +25,8 @@ public class UIInventory : MonoBehaviour
     public GameObject dropButton;
 
     private int curEquipIndex;
+    private Coroutine activeSpeedBoost;
+
 
     private PlayerController controller;
     private PlayerCondition condition;
@@ -197,7 +199,8 @@ public class UIInventory : MonoBehaviour
                     case ConsumableType.Hunger:
                         condition.Eat(selectedItem.item.consumables[i].value);break;
                     case ConsumableType.Speed :
-                        StartCoroutine(SpeedBoost(5f, selectedItem.item.consumables[i].value)); break;
+                        StartCoroutine(SpeedBoost(5f,selectedItem.item.consumables[i].value)); break;
+                        
                 }
             } 
             RemoveSelctedItem();
@@ -262,11 +265,23 @@ public class UIInventory : MonoBehaviour
     {
         return false;
     }
-    private IEnumerator SpeedBoost(float duration,float value)
+    
+    public void ApplySpeedBoost(float duration, float value)
+    {
+        if (activeSpeedBoost != null)
+        {
+            StopCoroutine(activeSpeedBoost); // 기존 SpeedBoost 중지
+        }
+        activeSpeedBoost = StartCoroutine(SpeedBoost(duration, value));
+    }
+
+    private IEnumerator SpeedBoost(float duration, float value)
     {
         controller.moveSpeed += value;
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         controller.moveSpeed -= value;
+        activeSpeedBoost = null; // 실행 종료 후 초기화
     }
+
 
 }
